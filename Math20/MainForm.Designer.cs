@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.pnl_Main = new System.Windows.Forms.Panel();
-            this.chBoxTest = new System.Windows.Forms.CheckBox();
+            this.checkBox_in10Limit = new System.Windows.Forms.CheckBox();
+            this.chBoxTest20question = new System.Windows.Forms.CheckBox();
             this.chBoxDeduction = new System.Windows.Forms.CheckBox();
             this.progssBar = new System.Windows.Forms.ProgressBar();
             this.l_QuaryListCount = new System.Windows.Forms.Label();
@@ -54,14 +55,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.l_MainShow = new System.Windows.Forms.Label();
-            this.checkBox_in10Limit = new System.Windows.Forms.CheckBox();
+            this.checkBox_equation = new System.Windows.Forms.CheckBox();
             this.pnl_Main.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_Main
             // 
+            this.pnl_Main.Controls.Add(this.checkBox_equation);
             this.pnl_Main.Controls.Add(this.checkBox_in10Limit);
-            this.pnl_Main.Controls.Add(this.chBoxTest);
+            this.pnl_Main.Controls.Add(this.chBoxTest20question);
             this.pnl_Main.Controls.Add(this.chBoxDeduction);
             this.pnl_Main.Controls.Add(this.progssBar);
             this.pnl_Main.Controls.Add(this.l_QuaryListCount);
@@ -91,18 +93,31 @@
             this.pnl_Main.Size = new System.Drawing.Size(1260, 656);
             this.pnl_Main.TabIndex = 25;
             // 
-            // chBoxTest
+            // checkBox_in10Limit
             // 
-            this.chBoxTest.AutoSize = true;
-            this.chBoxTest.Checked = true;
-            this.chBoxTest.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chBoxTest.Location = new System.Drawing.Point(140, 605);
-            this.chBoxTest.Name = "chBoxTest";
-            this.chBoxTest.Size = new System.Drawing.Size(73, 17);
-            this.chBoxTest.TabIndex = 44;
-            this.chBoxTest.Text = "Для Доці";
-            this.chBoxTest.UseVisualStyleBackColor = true;
-            this.chBoxTest.CheckedChanged += new System.EventHandler(this.MainForm_Load);
+            this.checkBox_in10Limit.AutoSize = true;
+            this.checkBox_in10Limit.Checked = true;
+            this.checkBox_in10Limit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_in10Limit.Location = new System.Drawing.Point(241, 605);
+            this.checkBox_in10Limit.Name = "checkBox_in10Limit";
+            this.checkBox_in10Limit.Size = new System.Drawing.Size(83, 17);
+            this.checkBox_in10Limit.TabIndex = 45;
+            this.checkBox_in10Limit.Text = "в межах 10";
+            this.checkBox_in10Limit.UseVisualStyleBackColor = true;
+            this.checkBox_in10Limit.CheckedChanged += new System.EventHandler(this.MainForm_Load);
+            // 
+            // chBoxTest20question
+            // 
+            this.chBoxTest20question.AutoSize = true;
+            this.chBoxTest20question.Checked = true;
+            this.chBoxTest20question.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chBoxTest20question.Location = new System.Drawing.Point(140, 605);
+            this.chBoxTest20question.Name = "chBoxTest20question";
+            this.chBoxTest20question.Size = new System.Drawing.Size(101, 17);
+            this.chBoxTest20question.TabIndex = 44;
+            this.chBoxTest20question.Text = "тест 20 питань";
+            this.chBoxTest20question.UseVisualStyleBackColor = true;
+            this.chBoxTest20question.CheckedChanged += new System.EventHandler(this.MainForm_Load);
             // 
             // chBoxDeduction
             // 
@@ -366,17 +381,18 @@
             this.l_MainShow.Text = "10+10=";
             this.l_MainShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // checkBox_in10Limit
+            // checkBox_equation
             // 
-            this.checkBox_in10Limit.AutoSize = true;
-            this.checkBox_in10Limit.Checked = true;
-            this.checkBox_in10Limit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_in10Limit.Location = new System.Drawing.Point(220, 605);
-            this.checkBox_in10Limit.Name = "checkBox_in10Limit";
-            this.checkBox_in10Limit.Size = new System.Drawing.Size(83, 17);
-            this.checkBox_in10Limit.TabIndex = 45;
-            this.checkBox_in10Limit.Text = "в межах 10";
-            this.checkBox_in10Limit.UseVisualStyleBackColor = true;
+            this.checkBox_equation.AutoSize = true;
+            this.checkBox_equation.Checked = true;
+            this.checkBox_equation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_equation.Location = new System.Drawing.Point(330, 605);
+            this.checkBox_equation.Name = "checkBox_equation";
+            this.checkBox_equation.Size = new System.Drawing.Size(70, 17);
+            this.checkBox_equation.TabIndex = 46;
+            this.checkBox_equation.Text = "рівняння";
+            this.checkBox_equation.UseVisualStyleBackColor = true;
+            this.checkBox_equation.CheckedChanged += new System.EventHandler(this.MainForm_Load);
             // 
             // MainForm
             // 
@@ -399,7 +415,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnl_Main;
-        private System.Windows.Forms.CheckBox chBoxTest;
+        private System.Windows.Forms.CheckBox chBoxTest20question;
         private System.Windows.Forms.CheckBox chBoxDeduction;
         private System.Windows.Forms.ProgressBar progssBar;
         private System.Windows.Forms.Label l_QuaryListCount;
@@ -425,6 +441,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label l_MainShow;
         private System.Windows.Forms.CheckBox checkBox_in10Limit;
+        private System.Windows.Forms.CheckBox checkBox_equation;
     }
 }
 

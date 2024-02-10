@@ -21,6 +21,19 @@ namespace Math20
         public string strQuery;
         public string strAnswer;
 
+        public string trueAnswer()
+        {
+            string answer;
+            if (strQuery.Contains("_"))
+            {
+                answer = strQuery.Replace("_", strAnswer);
+            }
+            else
+            {
+                answer = strQuery + strAnswer;
+            }
+            return answer;
+        }
     }
 
     public partial class MainForm : Form
@@ -69,8 +82,8 @@ namespace Math20
                     }
                 }
             }
-            // залишаємо у випадковому порядку 20 запитань
-            if (this.chBoxTest.Checked == true)
+            // вибираємо у випадковому порядку 20 запитань
+            if (this.chBoxTest20question.Checked == true)
             {
                 ArrayList truncQueryList = new ArrayList();
                 for (int i=0; i < 20; i++)
@@ -80,7 +93,12 @@ namespace Math20
                 }
                 this.QueryList = truncQueryList;
             }
-            
+
+            if (this.checkBox_equation.Checked == true)
+            {
+                this.generateEquationList(NumerLimit);
+            }
+
             // Настройка прогрес-бара
             this.progssBar.Maximum = this.QueryList.Count;
             this.progssBar.Value = this.QueryList.Count;
@@ -92,6 +110,24 @@ namespace Math20
             this.l_MainShow.Text = this.curQuery.strQuery;
         }
 
+        private void generateEquationList(int numerLimit)
+        {
+            // numerLimit 10 або 20, тобто операції мають бути в цих межах
+            this.QueryList.Clear();
+
+            for (int dodanok1 = 1; dodanok1 < numerLimit; dodanok1++)
+            {
+                for (int dodanok2 = 1; dodanok2 < numerLimit; dodanok2++)
+                {
+                    if (dodanok1 + dodanok2 <= numerLimit)
+                    {
+                        this.QueryList.Add(new OneQuery(dodanok1.ToString() + " + _ = " + (dodanok1 + dodanok2).ToString(), dodanok2.ToString()));
+                    }
+                }
+            }
+            
+        }
+
         private void AnaliseBtn(string UserAnser)
         {
             this.l_MainShow.Text = "";
@@ -101,7 +137,8 @@ namespace Math20
                 this.progssBar.Value--;
                 this.l_QuaryListCount.Text = this.progssBar.Value.ToString();
 
-                this.messageForm.Init_Message(this.curQuery.strQuery + this.curQuery.strAnswer, true);
+                this.messageForm.Init_Message(this.curQuery.trueAnswer(), true);
+
                 this.messageForm.ShowDialog();
                 
                 // видаляєм із списку приклад, на який дали правильну відповідь
@@ -117,7 +154,7 @@ namespace Math20
                 else
                 {
                     if(this.int_ErrorAmount>0)
-                    this.messageForm.Init_Message("Всього було помилок: " + this.int_ErrorAmount.ToString(), true);
+                        this.messageForm.Init_Message("Всього було помилок: " + this.int_ErrorAmount.ToString(), true);
                     else this.messageForm.Init_Message("Жодної помилки!!!", true);
                     this.messageForm.ShowDialog();
                     this.messageForm.Init_Message("cmd_End", true);
@@ -136,7 +173,9 @@ namespace Math20
             else
             {
                 this.int_ErrorAmount++;
-                this.messageForm.Init_Message(this.curQuery.strQuery+this.curQuery.strAnswer, false);
+
+                this.messageForm.Init_Message(this.curQuery.trueAnswer(), false);
+
                 this.messageForm.ShowDialog();
                 // вибираєм слідуючий приклад
                 this.NuberInLIst = RndGen.Next(this.QueryList.Count);
